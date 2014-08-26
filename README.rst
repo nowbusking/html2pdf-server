@@ -71,6 +71,12 @@ You can install it using ``pip``:
 
    $ pip install --user git+git://github.com/spoqa/html2pdf-server.git
 
+Note that WeasyPrint_ has several dependencies that need to be installed
+using system package managers e.g. APT, Homebrew.  `Read the docs.`__
+
+.. _WeasyPrint: http://weasyprint.org/
+__ http://weasyprint.org/docs/install/#by-platform
+
 
 Running server
 --------------
