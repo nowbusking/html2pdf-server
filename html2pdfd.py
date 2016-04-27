@@ -3,6 +3,8 @@ import argparse
 import io
 import json
 
+from wand.color import Color
+from wand.image import Image
 from waitress import serve
 from weasyprint import HTML
 from werkzeug.wrappers import Request, Response
@@ -12,10 +14,23 @@ __all__ = 'app',
 
 
 SUPPORTED_TYPES = {
-    'application/pdf': lambda html, buffer: html.write_pdf(buffer)
+    'application/pdf': lambda html, buffer: html.write_pdf(buffer),
+    'image/png': lambda html, buffer: html.write_png(buffer),
+    'image/jpeg': lambda html, buffer: render_to_jpeg(html, buffer),
 }
 
 MAX_HTML_SIZE = 1024 * 1024 * 50  # 50MiB
+
+
+def render_to_jpeg(html: HTML, buffer: io.BytesIO):
+    png_buffer = io.BytesIO()
+    html.write_png(png_buffer)
+    png_buffer.seek(0)
+    with Image(file=png_buffer) as image:
+        image.background_color = Color('#fff')
+        image.alpha_channel = 'remove'
+        image.format = 'jpeg'
+        image.save(file=buffer)
 
 
 @Request.application
@@ -44,7 +59,8 @@ def app(request: Request):
             }),
             status=400
         )
-    matched = request.accept_mimetypes.best_match(SUPPORTED_TYPES.keys())
+    matched = request.accept_mimetypes.best_match(SUPPORTED_TYPES.keys(),
+                                                  default='application/pdf')
     if not matched:
         return Response(
             json.dumps({

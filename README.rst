@@ -37,6 +37,21 @@ And then you will get a PDF document through its response e.g.:
    (...omitted...)
 
 
+Available mime types
+''''''''''''''''''''
+
+You can set ``Accept`` header to various mime types.
+
+application/pdf
+  respond a PDF document.  this type is the default type.
+
+image/png
+  respond a PNG image.
+
+image/jpeg
+  respond a JPEG image.
+
+
 Session in ``curl``
 -------------------
 
