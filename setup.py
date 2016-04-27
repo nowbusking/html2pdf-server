@@ -28,6 +28,7 @@ setup(
     license='AGPLv3 or later',
     py_modules=['html2pdfd'],
     install_requires=[
+        'Wand >= 0.4.2',
         'waitress >= 0.8.9',
         'WeasyPrint >= 0.22',
         'Werkzeug >= 0.9'

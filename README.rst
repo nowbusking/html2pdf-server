@@ -48,6 +48,9 @@ application/pdf
 image/png
   respond a PNG image.
 
+image/jpeg
+  respond a JPEG image.
+
 
 Session in ``curl``
 -------------------
