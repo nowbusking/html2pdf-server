@@ -12,7 +12,8 @@ __all__ = 'app',
 
 
 SUPPORTED_TYPES = {
-    'application/pdf': lambda html, buffer: html.write_pdf(buffer)
+    'application/pdf': lambda html, buffer: html.write_pdf(buffer),
+    'image/png': lambda html, buffer: html.write_png(buffer),
 }
 
 MAX_HTML_SIZE = 1024 * 1024 * 50  # 50MiB
@@ -44,7 +45,8 @@ def app(request: Request):
             }),
             status=400
         )
-    matched = request.accept_mimetypes.best_match(SUPPORTED_TYPES.keys())
+    matched = request.accept_mimetypes.best_match(SUPPORTED_TYPES.keys(),
+                                                  default='application/pdf')
     if not matched:
         return Response(
             json.dumps({
