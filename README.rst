@@ -1,6 +1,9 @@
 HTML to PDF rendering server
 ============================
 
+.. image:: https://img.shields.io/pypi/v/html2pdf-server.svg
+   :target: https://pypi.python.org/pypi/html2pdf-server
+
 .. image:: https://img.shields.io/docker/automated/spoqa/html2pdf-server.svg
    :target: https://hub.docker.com/r/spoqa/html2pdf-server/
 

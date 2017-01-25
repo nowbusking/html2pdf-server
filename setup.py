@@ -18,6 +18,7 @@ def readme():
 
 setup(
     name='html2pdf-server',
+    version='1.0.0',
     description='HTTP server that renders HTML to PDF',
     long_description=readme(),
     url='https://github.com/spoqa/html2pdf-server',
