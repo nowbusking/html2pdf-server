@@ -1,5 +1,8 @@
 from __future__ import with_statement
 
+import re
+import urllib.parse
+
 try:
     from setuptools import setup
 except ImportError:
@@ -11,9 +14,19 @@ except ImportError:
 def readme():
     try:
         with open('README.rst') as f:
-            return f.read()
+            content = f.read()
     except (IOError, OSError):
         pass
+    base_url = 'https://github.com/spoqa/html2pdf-server/raw/master/'
+    return re.sub(
+        r'((?:^|\n)..\s+image::\s+)((?!https?://).+)(\n|$)',
+        lambda m: (
+            m.group(1) +
+            urllib.parse.urljoin(base_url, m.group(2)) +
+            m.group(3)
+        ),
+        content
+    )
 
 
 setup(
