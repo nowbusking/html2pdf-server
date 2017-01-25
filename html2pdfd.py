@@ -59,7 +59,8 @@ def app(request: Request):
             }),
             status=400
         )
-    matched = request.accept_mimetypes.best_match(SUPPORTED_TYPES.keys(),
+    supported_types = sorted(SUPPORTED_TYPES)
+    matched = request.accept_mimetypes.best_match(supported_types,
                                                   default='application/pdf')
     if not matched:
         return Response(
