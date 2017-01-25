@@ -1,6 +1,9 @@
 HTML to PDF rendering server
 ============================
 
+.. image:: https://img.shields.io/docker/automated/spoqa/html2pdf-server.svg
+   :target: https://hub.docker.com/r/spoqa/html2pdf-server/
+
 The name says it all.  You request a ``POST`` with an HTML, and then you
 will get the response with the rendered PDF.
 
@@ -77,8 +80,22 @@ Result screenshot:
    :alt: Result screenshot
 
 
+Getting started using Docker
+----------------------------
+
+Due to its non-Python dependencies the easist way to use this is using Docker.
+The official Docker image exposes 8080 port for HTTP server.
+
+.. code-block:: console
+
+   $ docker run -p 8080:8080 spoqa/html2pdf-server
+
+
+Getting started without Docker
+------------------------------
+
 Installation
-------------
+''''''''''''
 
 You can install it using ``pip``:
 
@@ -94,7 +111,7 @@ __ http://weasyprint.org/docs/install/#by-platform
 
 
 Running server
---------------
+''''''''''''''
 
 Use ``html2pdfd`` command:
 
