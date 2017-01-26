@@ -153,7 +153,7 @@ Changelog
 Version 1.1.0
 '''''''''''''
 
-To be released.
+Released on January 26, 2017.
 
 - Added an option to enable pong endpoint for health check.
 
