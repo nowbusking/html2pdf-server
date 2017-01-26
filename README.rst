@@ -99,6 +99,7 @@ variable:
 .. code-block:: console
 
    $ docker run -e PONG_PATH=/ping/ -p 8080:8080 spoqa/html2pdf-server
+   Serving on http://0.0.0.0:8080
 
 
 Getting started without Docker
@@ -128,15 +129,15 @@ Use ``html2pdfd`` command:
 .. code-block:: console
 
    $ html2pdfd --port 8080
-   serving on http://0.0.0.0:8080
+   Serving on http://0.0.0.0:8080
 
 Or you can use your preferred WSGI server as well (WSGI endpoint is
 ``html2pdfd:app``):
 
 .. code-block:: console
 
-   $ waitress-serve --port=8080 html2pdfd:app
-   serving on http://0.0.0.0:8080
+   $ aiohttp-wsgi-serve html2pdfd:app
+   Serving on http://:::8080 http://0.0.0.0:8080
 
 
 License
@@ -149,6 +150,20 @@ Distributed under AGPLv3_ or later.
 
 Changelog
 ---------
+
+Version 1.2.0
+'''''''''''''
+
+To be released.
+
+- The prerequisite Python version became 3.5 or higher.
+  Python 3.4 or lower are no more supported.
+- Replaced waitress_ with aiohttp-wsgi_.
+- The Docker image now uses Python 3.5 instead of 3.4.
+
+.. _waitress: https://github.com/Pylons/waitress
+.. _aiohttp-wsgi: https://github.com/etianen/aiohttp-wsgi
+
 
 Version 1.1.0
 '''''''''''''

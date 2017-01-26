@@ -2,10 +2,12 @@
 import argparse
 import io
 import json
+import logging
 
+from aiohttp.web import Application, run_app
+from aiohttp_wsgi import WSGIHandler
 from wand.color import Color
 from wand.image import Image
-from waitress import serve
 from weasyprint import HTML
 from werkzeug.wrappers import Request, Response
 from werkzeug.serving import run_simple
@@ -109,7 +111,15 @@ def main():
         run_simple(args.host, args.port, wsgi_app,
                    use_debugger=True, use_reloader=True)
     else:
-        serve(wsgi_app, host=args.host, port=args.port)
+        logging.basicConfig(level=logging.INFO, format='%(message)s')
+        for logger_name in 'html2pdfd', 'aiohttp', 'aiohttp_wsgi':
+            logging.getLogger(logger_name).setLevel(logging.INFO)
+        wsgi_handler = WSGIHandler(wsgi_app)
+        aio_app = Application()
+        aio_app.router.add_route('*', '/{path_info:.*}', wsgi_handler)
+        logging.getLogger('html2pdfd').info('Serving on http://{0}:{1}',
+                                            args.host, args.port)
+        run_app(aio_app, host=args.host, port=args.port)
 
 
 if __name__ == '__main__':
