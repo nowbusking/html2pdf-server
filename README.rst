@@ -135,4 +135,6 @@ Or you can use your preferred WSGI server as well (WSGI endpoint is
 License
 -------
 
-Distributed under AGPL3 or later.
+Distributed under AGPLv3_ or later.
+
+.. _AGPLv3: https://www.gnu.org/licenses/agpl-3.0.html
