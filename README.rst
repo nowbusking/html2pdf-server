@@ -93,6 +93,13 @@ The official Docker image exposes 8080 port for HTTP server.
 
    $ docker run -p 8080:8080 spoqa/html2pdf-server
 
+If you need a pong endpoint for health check specify ``PONG_PATH`` environment
+variable:
+
+.. code-block:: console
+
+   $ docker run -e PONG_PATH=/ping/ -p 8080:8080 spoqa/html2pdf-server
+
 
 Getting started without Docker
 ------------------------------
@@ -147,6 +154,11 @@ Version 1.1.0
 '''''''''''''
 
 To be released.
+
+- Added an option to enable pong endpoint for health check.
+
+  - ``PONG_PATH`` environment variable for Docker.
+  - ``--pong-path`` option for CLI.
 
 - Fixed a bug that ``--help`` option crashed while it's trying to render
   default values.

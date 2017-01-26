@@ -34,7 +34,7 @@ def render_to_jpeg(html: HTML, buffer: io.BytesIO):
 
 
 @Request.application
-def app(request: Request):
+def app(request: Request) -> Response:
     if request.path != '/':
         return Response(
             json.dumps({
@@ -87,14 +87,29 @@ def main():
     parser.add_argument('--port', '-p',
                         type=int, default=8080,
                         help='port to listen [%(default)s]')
+    parser.add_argument('--pong-path',
+                        help='pong path to respond to to ping (e.g. /pong/)')
     parser.add_argument('--debug', '-d',
                         action='store_true', help='debug mode')
     args = parser.parse_args()
+    pong_path = args.pong_path
+    if pong_path is None:
+        wsgi_app = app
+    else:
+        if not pong_path.startswith('/'):
+            parser.error('--pong-path value must start with a slash (/)')
+            return
+
+        @Request.application
+        def wsgi_app(request: Request):
+            if request.path == pong_path:
+                return Response('true', mimetype='application/json')
+            return app
     if args.debug:
-        run_simple(args.host, args.port, app,
+        run_simple(args.host, args.port, wsgi_app,
                    use_debugger=True, use_reloader=True)
     else:
-        serve(app, host=args.host, port=args.port)
+        serve(wsgi_app, host=args.host, port=args.port)
 
 
 if __name__ == '__main__':
