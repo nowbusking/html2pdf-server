@@ -154,7 +154,7 @@ Changelog
 Version 1.2.0
 '''''''''''''
 
-To be released.
+Released on January 27, 2017.
 
 - The prerequisite Python version became 3.5 or higher.
   Python 3.4 or lower are no more supported.
