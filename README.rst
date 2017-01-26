@@ -143,6 +143,15 @@ Distributed under AGPLv3_ or later.
 Changelog
 ---------
 
+Version 1.1.0
+'''''''''''''
+
+To be released.
+
+- Fixed a bug that ``--help`` option crashed while it's trying to render
+  default values.
+
+
 Version 1.0.0
 '''''''''''''
 

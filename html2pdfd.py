@@ -83,10 +83,10 @@ def main():
         description='HTTP server that renders HTML to PDF'
     )
     parser.add_argument('--host', '-H',
-                        default='0.0.0.0', help='host to listen [%default]')
+                        default='0.0.0.0', help='host to listen [%(default)s]')
     parser.add_argument('--port', '-p',
                         type=int, default=8080,
-                        help='port to listen [%default]')
+                        help='port to listen [%(default)s]')
     parser.add_argument('--debug', '-d',
                         action='store_true', help='debug mode')
     args = parser.parse_args()
