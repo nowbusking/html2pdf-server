@@ -138,3 +138,12 @@ License
 Distributed under AGPLv3_ or later.
 
 .. _AGPLv3: https://www.gnu.org/licenses/agpl-3.0.html
+
+
+Changelog
+---------
+
+Version 1.0.0
+'''''''''''''
+
+Initial release.  Released on January 25, 2017.
