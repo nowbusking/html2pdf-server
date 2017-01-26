@@ -1,0 +1,6 @@
+*.egg-info
+.git
+build
+dist
+ez_setup.py
+screenshot.png
