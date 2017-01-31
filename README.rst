@@ -151,6 +151,14 @@ Distributed under AGPLv3_ or later.
 Changelog
 ---------
 
+Version 1.2.2
+'''''''''''''
+
+To be released.
+
+- Fixed a crash during the server prints the first log.
+
+
 Version 1.2.1
 '''''''''''''
 

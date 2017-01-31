@@ -117,7 +117,7 @@ def main():
         wsgi_handler = WSGIHandler(wsgi_app)
         aio_app = Application()
         aio_app.router.add_route('*', '/{path_info:.*}', wsgi_handler)
-        logging.getLogger('html2pdfd').info('Serving on http://{0}:{1}',
+        logging.getLogger('html2pdfd').info('Serving on http://%s:%d',
                                             args.host, args.port)
         run_app(aio_app, host=args.host, port=args.port)
 
