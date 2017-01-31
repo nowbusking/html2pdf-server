@@ -151,6 +151,12 @@ Distributed under AGPLv3_ or later.
 Changelog
 ---------
 
+Version 1.2.1
+'''''''''''''
+
+To be released.
+
+
 Version 1.2.0
 '''''''''''''
 
