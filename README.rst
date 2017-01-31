@@ -156,6 +156,8 @@ Version 1.2.1
 
 To be released.
 
+- Docker image now includes built-in fonts for Chinese/Japanese/Korean.
+
 
 Version 1.2.0
 '''''''''''''
