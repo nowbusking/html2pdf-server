@@ -154,7 +154,7 @@ Changelog
 Version 1.2.2
 '''''''''''''
 
-To be released.
+Released on January 31, 2017.
 
 - Fixed a crash during the server prints the first log.
 
